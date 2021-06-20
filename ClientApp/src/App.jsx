@@ -1,7 +1,7 @@
 import React from 'react'
 import './custom.scss'
-import { About } from './pages/About'
+import { PunchCard } from './pages/PunchCard'
 
 export function App() {
-  return <About />
+  return <PunchCard />
 }
