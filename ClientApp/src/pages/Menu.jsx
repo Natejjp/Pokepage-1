@@ -3,22 +3,6 @@ import React from 'react'
 export function Menu() {
   return (
     <>
-      <header className="header">
-        <div className="rightSide">
-          <ul>
-            <li>Poke Falls</li>
-          </ul>
-        </div>
-        <div className="leftSide">
-          <ul className="nav">
-            <li>About</li>
-            <li>Menu</li>
-            <li>Order Now</li>
-            <li>Punch Card</li>
-          </ul>
-        </div>
-      </header>
-
       <section className="menuContainer" id="topMenu">
         <h1>Build your Own Menu</h1>
         <h3>Base:</h3>

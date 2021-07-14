@@ -1,44 +1,62 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 export function PunchCard() {
+  const [punchCards, setPunchCards] = useState([])
+  const [filterPunchCards, setFilterPunchCards] = useState('')
+
+  const [newPunchCard, setNewPunchCard] = useState({
+    id: 0,
+    name: '',
+    telephone: '',
+    punches: 0,
+  })
+  useEffect(
+    function () {
+      async function loadPunchCards() {
+        const url =
+          filterPunchCards.length === 0
+            ? 'api/PunchCards'
+            : `api/PunchCards?filter=${filterPunchCards}`
+        const response = await fetch(url)
+        if (response.ok) {
+          const json = await response.json()
+          setPunchCards(json)
+        }
+      }
+      loadPunchCards()
+    },
+    [filterPunchCards]
+  )
+
   return (
     <>
-      <header className="header">
-        <div className="rightSide">
-          <ul>
-            <li>Poke Falls</li>
-          </ul>
-        </div>
-        <div className="leftSide">
-          <ul className="nav">
-            <li>About</li>
-            <li>Menu</li>
-            <li>Order Now</li>
-            <li>Punch Card</li>
-          </ul>
-        </div>
-      </header>
       <div className="topPunchCard">
         Enter phone number
-        <input />
+        <form>
+          <input
+            type="text"
+            placeholder="Phone number"
+            value={filterPunchCards}
+            onChange={function (event) {
+              setFilterPunchCards(event.target.value)
+            }}
+          />
+          <input type="submit" />
+        </form>
       </div>
       <div className="topPunchCard">
-        Enter number of stamps
-        <input />
+        {punchCards.map((punchCard) => (
+          <h3 key={punchCard.id}>{punchCard.name}</h3>
+        ))}
       </div>
+
       <div className="topPunchCard">
-        <ul className="punchCard">
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
-          <li>6</li>
-          <li>7</li>
-          <li>8</li>
-          <li>9</li>
-          <li>10</li>
-        </ul>
+        <form action="#">
+          <p>
+            <label>Name</label>
+            <input type="tel" name="telephone" />
+          </p>
+        </form>
       </div>
     </>
   )

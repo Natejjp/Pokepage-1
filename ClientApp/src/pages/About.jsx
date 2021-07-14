@@ -3,21 +3,6 @@ import React from 'react'
 export function About() {
   return (
     <>
-      <header className="header">
-        <div className="rightSide">
-          <ul>
-            <li>Poke Falls</li>
-          </ul>
-        </div>
-        <div className="leftSide">
-          <ul className="nav">
-            <li>About</li>
-            <li>Menu</li>
-            <li>Order Now</li>
-            <li>Punch Card</li>
-          </ul>
-        </div>
-      </header>
       <div className="aboutPage">
         <div>
           <p>
